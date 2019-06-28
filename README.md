@@ -2,8 +2,6 @@
 
 [What is `pipe`?](https://dev.to/benlesh/a-simple-explanation-of-functional-pipe-in-javascript-2hbj)
 
-Overloads to support up to 9 functions.
-
 ## Installation
 
 ```sh

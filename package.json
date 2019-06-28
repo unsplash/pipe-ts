@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/unsplash/pipe-ts.git"
   },
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "lint": "tslint --project ./tsconfig.json",
     "compile": "rm -rf ./target/ && tsc",

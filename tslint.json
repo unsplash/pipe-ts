@@ -1,0 +1,61 @@
+{
+    "extends": ["tslint-no-unused"],
+    "linterOptions": {
+        "exclude": ["**/node_modules/**/*"]
+    },
+    "rules": {
+        "no-unused": true,
+        "no-any": true,
+        "no-unsafe-any": true,
+        "strict-boolean-expressions": true,
+        "ordered-imports": [true],
+        "no-inferrable-types": [true, "ignore-properties"],
+        "no-switch-case-fall-through": true,
+        "arrow-return-shorthand": [true, "multiline"],
+        "no-use-before-declare": true,
+        "no-inferred-empty-object-type": true,
+        "unified-signatures": true,
+        "no-conditional-assignment": true,
+        "no-floating-promises": true,
+        "no-object-literal-type-assertion": true,
+        "no-shadowed-variable": true,
+        "no-unbound-method": [true, "ignore-static"],
+        "no-unused-expression": true,
+        "no-var-keyword": true,
+        "no-void-expression": true,
+        "prefer-object-spread": true,
+        "radix": true,
+        "restrict-plus-operands": true,
+        "triple-equals": true,
+        "use-default-type-parameter": true,
+        "use-isnan": true,
+        "deprecation": true,
+        "max-file-line-count": [true, 400],
+        // Rationale: https://github.com/palantir/tslint/issues/1182#issue-151780453
+        "no-default-export": true,
+        "prefer-const": true,
+        "class-name": true,
+        "match-default-export-name": true,
+        "no-boolean-literal-compare": true,
+        "no-consecutive-blank-lines": true,
+        "no-irregular-whitespace": true,
+        "no-unnecessary-callback-wrapper": true,
+        "object-literal-shorthand": true,
+        "prefer-switch": true,
+        "prefer-template": true,
+        "quotemark": [true, "single", "avoid-escape"],
+        "variable-name": [
+            true,
+            "ban-keywords",
+            "check-format",
+            // e.g. for whitelisting unused function parameters
+            "allow-leading-underscore",
+            // e.g. for io-ts types
+            "allow-pascal-case"
+        ],
+        "no-import-side-effect": true,
+        "no-duplicate-imports": true,
+        "no-implicit-dependencies": [true, "dev"],
+        "array-type": [true, "array-simple"]
+    }
+}

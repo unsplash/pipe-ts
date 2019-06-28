@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "strict": true,
+        "noImplicitReturns": true,
+        "sourceMap": true,
+        "outDir": "./target/",
+        "rootDir": "./src/",
+        "plugins": [{ "name": "tslint-language-service" }],
+        "declaration": true
+    },
+    "files": ["./src/index.ts", "./src/tests.ts"]
+}

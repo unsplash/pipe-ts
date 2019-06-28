@@ -3,7 +3,7 @@ import { pipe, pipeWith } from './index';
 
 const singleParamFnAdd1 = (n: number) => n + 1;
 const singleParamFnTimes2 = (n: number) => n * 2;
-const multipleParamFn = (a: number, b: number) => a - b;
+const multipleParamFnDifference = (a: number, b: number) => a - b;
 
 // We should really bring in a test framework to help here.
 const describe = (name: string, fn: () => void) => {
@@ -107,9 +107,9 @@ describe('pipe', () => {
     it('works when first function has multiple params', () => {
         assert.strictEqual(
             pipe(
-                multipleParamFn,
+                multipleParamFnDifference,
                 singleParamFnAdd1,
-            )(2, 1),
+            )(5, 4),
             2,
         );
     });

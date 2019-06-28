@@ -17,13 +17,14 @@ npm install pipe-ts
 Create a new function which pipes its value through the list functions.
 
 ```ts
-const singleParamFnAdd1 = (n: number) => n + 1;
-const singleParamFnTimes2 = (n: number) => n * 2;
+const add1 = (n: number) => n + 1;
+const times2 = (n: number) => n * 2;
 
-const result = pipe(
-    singleParamFnAdd1,
-    singleParamFnTimes2,
-)(1);
+const add1ThenTimes2 = pipe(
+    add1,
+    times2,
+);
+const result: number = add1ThenTimes2(1);
 
 assert.strictEqual(result, 4);
 ```
@@ -31,13 +32,14 @@ assert.strictEqual(result, 4);
 Allows first function to have multiple parameters, [using generic rest parameters](https://github.com/Microsoft/TypeScript/issues/29904#issuecomment-471334674)
 
 ```ts
-const singleParamFnAdd1 = (n: number) => n + 1;
-const multipleParamFn = (a: number, b: number) => a - b;
+const difference = (a: number, b: number) => a - b;
+const add1 = (n: number) => n + 1;
 
-const result = pipe(
-    multipleParamFn,
-    singleParamFnAdd1,
-)(2, 1);
+const differenceThenAdd1 = pipe(
+    difference,
+    add1,
+);
+const result: number = differenceThenAdd1(5, 4);
 
 assert.strictEqual(result, 2);
 ```
@@ -47,10 +49,10 @@ assert.strictEqual(result, 2);
 Transform a value by piping it through the listed functions. Sugar syntax for `pipe(f, g)(value)`.
 
 ```ts
-const singleParamFnAdd1 = (n: number) => n + 1;
-const singleParamFnTimes2 = (n: number) => n * 2;
+const add1 = (n: number) => n + 1;
+const times2 = (n: number) => n * 2;
 
-const result = pipeWith(1, singleParamFnAdd1, singleParamFnTimes2);
+const result: number = pipeWith(1, add1, times2);
 
 assert.strictEqual(result, 4);
 ```

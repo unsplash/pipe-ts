@@ -16,6 +16,16 @@ const it = (name: string, fn: () => void) => {
 };
 
 describe('pipe', () => {
+    it('works when first function has 0 params', () => {
+        assert.strictEqual(
+            pipe(
+                () => 1,
+                singleParamFnAdd1,
+            )(),
+            2,
+        );
+    });
+
     it('works when first function has single param', () => {
         // One test for each overload
         assert.strictEqual(pipe(singleParamFnAdd1)(1), 2);

@@ -13,7 +13,7 @@
     "functional",
     "fp"
   ],
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "lint": "tslint --project ./tsconfig.json",
     "compile": "rm -rf ./target/ && tsc",

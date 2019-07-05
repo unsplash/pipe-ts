@@ -1,5 +1,3 @@
-// tslint:disable-next-line no-any
-type AnyFunction = (...params: any[]) => any;
 type UnknownFunction = (...params: unknown[]) => unknown;
 
 // Copied from https://github.com/gcanti/fp-ts/blob/1.15.0/src/function.ts#L209 with some
@@ -65,7 +63,6 @@ export function pipe<A extends unknown[], B, C, D, E, F, G, H, I, J>(
     hi: (h: H) => I,
     ij: (i: I) => J,
 ): (...args: A) => J;
-export function pipe(...fns: AnyFunction[]): UnknownFunction;
 export function pipe(...fns: UnknownFunction[]): UnknownFunction {
     return (...initialParams: unknown[]): unknown =>
         fns.reduce<unknown>((value, fn, index) => {
@@ -134,7 +131,10 @@ export function pipeWith<A, B, C, D, E, F, G, H, I, J>(
     hi: (h: H) => I,
     ij: (i: I) => J,
 ): J;
-export function pipeWith(a: unknown, ...fns: AnyFunction[]): unknown;
 export function pipeWith(value: unknown, ...fns: UnknownFunction[]): unknown {
-    return pipe(...fns)(value);
+    return pipe(
+        // Our overloads do not currently support arrays
+        // @ts-ignore
+        ...fns,
+    )(value);
 }

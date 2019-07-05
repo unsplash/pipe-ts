@@ -55,9 +55,9 @@ const result: number = pipeWith(1, add1, times2);
 assert.strictEqual(result, 4);
 ```
 
-## Note about type safety
+## Note about number of functions
 
-`pipe` and `pipeWith` currently support up to 9 functions. If more than 9 functions are passed, type safety will be lost. If need be, we are open to adding more overloads to avoid this.
+`pipe` and `pipeWith` currently support up to 9 functions. If need be, we are open to adding more overloads to avoid this.
 
 ## Development
 

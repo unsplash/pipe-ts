@@ -113,21 +113,6 @@ describe('pipe', () => {
             )(1),
             47,
         );
-        assert.strictEqual(
-            pipe(
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-            )(1),
-            94,
-        );
     });
 
     it('works when first function has multiple params', () => {
@@ -224,22 +209,6 @@ describe(pipeWith.name, () => {
                 singleParamFnAdd1,
             ),
             47,
-        );
-        assert.strictEqual(
-            pipeWith(
-                1,
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-            ),
-            94,
         );
     });
 });

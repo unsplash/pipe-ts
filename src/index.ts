@@ -1,3 +1,4 @@
+// tslint:disable-next-line no-any
 type AnyFunction = (...params: any[]) => any;
 type UnknownFunction = (...params: unknown[]) => unknown;
 

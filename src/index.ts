@@ -1,7 +1,9 @@
-type AnyFunction = (...params: unknown[]) => unknown;
+type AnyFunction = (...params: any[]) => any;
+type UnknownFunction = (...params: unknown[]) => unknown;
 
 // Copied from https://github.com/gcanti/fp-ts/blob/1.15.0/src/function.ts#L209 with some
 // modifications to make the first function allow multiple parameters.
+export function pipe<A extends unknown[], B>(ab: (...a: A) => B): (...args: A) => B;
 export function pipe<A extends unknown[], B, C>(
     ab: (...a: A) => B,
     bc: (b: B) => C,
@@ -62,7 +64,8 @@ export function pipe<A extends unknown[], B, C, D, E, F, G, H, I, J>(
     hi: (h: H) => I,
     ij: (i: I) => J,
 ): (...args: A) => J;
-export function pipe(...fns: AnyFunction[]): AnyFunction {
+export function pipe(...fns: AnyFunction[]): UnknownFunction;
+export function pipe(...fns: UnknownFunction[]): UnknownFunction {
     return (...initialParams: unknown[]): unknown =>
         fns.reduce<unknown>((value, fn, index) => {
             const params = index === 0 ? (value as unknown[]) : [value];
@@ -70,6 +73,7 @@ export function pipe(...fns: AnyFunction[]): AnyFunction {
         }, initialParams);
 }
 
+export function pipeWith<A, B>(a: A, ab: (a: A) => B): B;
 export function pipeWith<A, B, C>(a: A, ab: (a: A) => B, bc: (b: B) => C): C;
 export function pipeWith<A, B, C, D>(a: A, ab: (a: A) => B, bc: (b: B) => C, cd: (c: C) => D): D;
 export function pipeWith<A, B, C, D, E>(
@@ -129,10 +133,7 @@ export function pipeWith<A, B, C, D, E, F, G, H, I, J>(
     hi: (h: H) => I,
     ij: (i: I) => J,
 ): J;
-export function pipeWith(value: unknown, ...fns: AnyFunction[]) {
-    return pipe(
-        // TODO:
-        // @ts-ignore
-        ...fns,
-    )(value);
+export function pipeWith(a: unknown, ...fns: AnyFunction[]): unknown;
+export function pipeWith(value: unknown, ...fns: UnknownFunction[]): unknown {
+    return pipe(...fns)(value);
 }

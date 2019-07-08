@@ -59,6 +59,8 @@ assert.strictEqual(result, 4);
 
 `pipe` and `pipeWith` currently support up to 9 functions. If need be, we are open to adding more overloads to increase this limit.
 
+We are [also open to adding an array overload](https://github.com/unsplash/pipe-ts/issues/5), so any number of funtions can be passed.
+
 ## Development
 
 ```

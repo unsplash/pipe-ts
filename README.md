@@ -57,7 +57,7 @@ assert.strictEqual(result, 4);
 
 ## Note about number of functions
 
-`pipe` and `pipeWith` currently support up to 9 functions. If need be, we are open to adding more overloads to avoid this.
+`pipe` and `pipeWith` currently support up to 9 functions. If need be, we are open to adding more overloads to increase this limit.
 
 ## Development
 

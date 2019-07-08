@@ -1,6 +1,7 @@
 import * as assert from 'assert';
 import { pipe, pipeWith } from './index';
 
+const zeroParamGetNumber = () => 1;
 const singleParamFnAdd1 = (n: number) => n + 1;
 const singleParamFnTimes2 = (n: number) => n * 2;
 const multipleParamFnDifference = (a: number, b: number) => a - b;
@@ -19,7 +20,7 @@ describe('pipe', () => {
     it('works when first function has 0 params', () => {
         assert.strictEqual(
             pipe(
-                () => 1,
+                zeroParamGetNumber,
                 singleParamFnAdd1,
             )(),
             2,

@@ -30,6 +30,8 @@ assert.strictEqual(result, 4);
 Allows first function to have any number of parameters (0+), [thanks to TypeScript's generic rest parameters](https://github.com/Microsoft/TypeScript/issues/29904#issuecomment-471334674)
 
 ```ts
+// First function has multiple parameters
+
 const difference = (a: number, b: number) => a - b;
 const add1 = (n: number) => n + 1;
 
@@ -38,6 +40,21 @@ const differenceThenAdd1 = pipe(
     add1,
 );
 const result: number = differenceThenAdd1(5, 4);
+
+assert.strictEqual(result, 2);
+```
+
+```ts
+// First function has 0 parameters
+
+const getNumber = () => 1;
+const add1 = (n: number) => n + 1;
+
+const getNumberThenAdd1 = pipe(
+    getNumber,
+    add1,
+);
+const result: number = getNumberThenAdd1();
 
 assert.strictEqual(result, 2);
 ```

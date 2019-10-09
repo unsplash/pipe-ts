@@ -78,6 +78,30 @@ assert.strictEqual(result, 4);
 
 We are [also open to adding an array overload](https://github.com/unsplash/pipe-ts/issues/5), so any number of funtions can be passed.
 
+## When `this` matters
+
+If a function passed to `pipe` or `pipeWith` relies on a specific context of execution ([`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)), you cannot call it by passing the reference (_point-free style_).
+
+Use an anonymous function instead.
+
+**Bad**
+
+```ts
+pipeWith('foo', localStorage.getItem);
+```
+
+**Good**
+
+```ts
+pipeWith('foo', key => localStorage.getItem(key));
+```
+
+**Also good**
+
+```ts
+pipeWith('foo', localStorage.getItem.bind(localStorage)),
+```
+
 ## Development
 
 ```

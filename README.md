@@ -87,13 +87,19 @@ Use an anonymous function instead.
 **Bad**
 
 ```ts
-pipeWith('foo', JSON.parse);
+pipeWith('foo', localStorage.getItem);
 ```
 
 **Good**
 
 ```ts
-pipeWith('foo', input => JSON.parse(input));
+pipeWith('foo', key => localStorage.getItem(key));
+```
+
+**Also good**
+
+```ts
+pipeWith('foo', localStorage.getItem.bind(localStorage)),
 ```
 
 ## Development

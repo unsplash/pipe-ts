@@ -19,7 +19,8 @@
     "compile": "rm -rf ./target/ && tsc",
     "test": "npm run compile && node --require source-map-support/register ./target/tests.js",
     "format": "prettier --write './**/*.{ts,tsx,js,json,md}' '.prettierrc'",
-    "prepublishOnly": "npm run test && npm run lint && npm run compile"
+    "prepublishOnly": "npm run test && npm run lint && npm run compile",
+    "postinstall": "node generate --25"
   },
   "files": [
     "src",

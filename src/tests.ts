@@ -18,40 +18,16 @@ const it = (name: string, fn: () => void) => {
 
 describe('pipe', () => {
     it('works when first function has 0 params', () => {
-        assert.strictEqual(
-            pipe(
-                zeroParamGetNumber,
-                singleParamFnAdd1,
-            )(),
-            2,
-        );
+        assert.strictEqual(pipe(zeroParamGetNumber, singleParamFnAdd1)(), 2);
     });
 
     it('works when first function has single param', () => {
         // One test for each overload
         assert.strictEqual(pipe(singleParamFnAdd1)(1), 2);
+        assert.strictEqual(pipe(singleParamFnAdd1, singleParamFnTimes2)(1), 4);
+        assert.strictEqual(pipe(singleParamFnAdd1, singleParamFnTimes2, singleParamFnAdd1)(1), 5);
         assert.strictEqual(
-            pipe(
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-            )(1),
-            4,
-        );
-        assert.strictEqual(
-            pipe(
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-                singleParamFnAdd1,
-            )(1),
-            5,
-        );
-        assert.strictEqual(
-            pipe(
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-                singleParamFnAdd1,
-                singleParamFnTimes2,
-            )(1),
+            pipe(singleParamFnAdd1, singleParamFnTimes2, singleParamFnAdd1, singleParamFnTimes2)(1),
             10,
         );
         assert.strictEqual(
@@ -117,13 +93,7 @@ describe('pipe', () => {
     });
 
     it('works when first function has multiple params', () => {
-        assert.strictEqual(
-            pipe(
-                multipleParamFnDifference,
-                singleParamFnAdd1,
-            )(5, 4),
-            2,
-        );
+        assert.strictEqual(pipe(multipleParamFnDifference, singleParamFnAdd1)(5, 4), 2);
     });
 });
 

@@ -15,7 +15,7 @@
   ],
   "version": "0.0.9",
   "scripts": {
-    "lint": "tslint --project ./tsconfig.json",
+    "lint": "eslint .",
     "compile": "rm -rf ./target/ && tsc",
     "test": "npm run compile && node --require source-map-support/register ./target/tests.js",
     "format": "prettier --write './**/*.{ts,tsx,js,json,md}' '.prettierrc'",
@@ -26,12 +26,12 @@
     "target"
   ],
   "devDependencies": {
-    "@types/node": "^12.0.10",
-    "prettier": "^1.18.2",
-    "source-map-support": "^0.5.12",
-    "tslint": "^5.18.0",
-    "tslint-language-service": "^0.9.9",
-    "tslint-no-unused": "^0.2.0-alpha.1",
-    "typescript": "^3.5.2"
+    "@types/node": "^20.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
+    "eslint": "^8.43.0",
+    "prettier": "^2.8.8",
+    "source-map-support": "^0.5.21",
+    "typescript": "~5.0.0"
   }
 }

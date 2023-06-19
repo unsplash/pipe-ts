@@ -18,10 +18,7 @@ Create a new function which pipes its value through the list functions.
 const add1 = (n: number) => n + 1;
 const times2 = (n: number) => n * 2;
 
-const add1ThenTimes2 = pipe(
-    add1,
-    times2,
-);
+const add1ThenTimes2 = pipe(add1, times2);
 const result: number = add1ThenTimes2(1);
 
 assert.strictEqual(result, 4);
@@ -35,10 +32,7 @@ Allows first function to have any number of parameters (0+), [thanks to TypeScri
 const difference = (a: number, b: number) => a - b;
 const add1 = (n: number) => n + 1;
 
-const differenceThenAdd1 = pipe(
-    difference,
-    add1,
-);
+const differenceThenAdd1 = pipe(difference, add1);
 const result: number = differenceThenAdd1(5, 4);
 
 assert.strictEqual(result, 2);
@@ -50,10 +44,7 @@ assert.strictEqual(result, 2);
 const getNumber = () => 1;
 const add1 = (n: number) => n + 1;
 
-const getNumberThenAdd1 = pipe(
-    getNumber,
-    add1,
-);
+const getNumberThenAdd1 = pipe(getNumber, add1);
 const result: number = getNumberThenAdd1();
 
 assert.strictEqual(result, 2);
@@ -93,7 +84,7 @@ pipeWith('foo', localStorage.getItem);
 **Good**
 
 ```ts
-pipeWith('foo', key => localStorage.getItem(key));
+pipeWith('foo', (key) => localStorage.getItem(key));
 ```
 
 **Also good**
